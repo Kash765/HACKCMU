@@ -15,7 +15,7 @@ class ship(object):
             canvas.create_image(x, y, image=ImageTk.PhotoImage(resized))
 
         x = (self.column)*100 + 50
-        canvas.create_image(x,600, image=ImageTk.PhotoImage(Image.open("images/ship.jpeg"))) # change later
+        canvas.create_image(x,600, image=ImageTk.PhotoImage(Image.open("images/finalship.png"))) 
     
     def updateBullets(self): # called every timer tick
         res = []

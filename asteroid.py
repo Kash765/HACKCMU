@@ -9,7 +9,17 @@ class asteroid(object):
         for a in self.asteroids:
             (c, y) = a
             x = c*100 + 50
-            asteroid = Image.open("images/asteroid.png")
+            # idk if this works 
+            ast = random.randint(1, 5)
+            asteroid = Image.open("images/asteroid 1.png")
+            if ast = 2: 
+                asteroid = Image.open("images/asteroid 2.png")
+            elif ast = 3: 
+                asteroid = Image.open("images/asteroid 3.png")
+            elif ast = 4: 
+                asteroid = Image.open("images/asteroid 4.png")
+            elif ast = 5: 
+                asteroid = Image.open("images/asteroid 5.png")
             resized = asteroid.resize((50,50))
             canvas.create_image(x,y, image=ImageTk.PhotoImage(resized))
 
