@@ -9,7 +9,7 @@ class asteroid(object):
         for a in self.asteroids:
             (c, y) = a
             x = c*100 + 50
-            asteroid = Image.open("images/asteroid.png")
+            asteroid = Image.open("images/asteroid 1.png")
             resized = asteroid.resize((50,50))
             canvas.create_image(x,y, image=ImageTk.PhotoImage(resized))
 
