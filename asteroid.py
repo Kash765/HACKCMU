@@ -23,15 +23,30 @@ class asteroid(object):
             resized = asteroid.resize((50,50))
             canvas.create_image(x,y, image=ImageTk.PhotoImage(resized))
 
-    def checkCollision(self, app):
-        pass
+    def checkCollisionShip(self, app, c,y):
+        if y >= 550 and c == app.ship.column:
+            return True
+        return False
+    
+    def checkCollisionBullet(self, app, c, y):
+        for b in app.ship.bullets:
+            (c1, h1) = b
+            if abs(y - h1) <= 20 and c1 == c:
+                return True
+        return False
 
     def updateAsteroid(self, app):
         res = []
         for i in range(len(self.asteroids)):
             (c, y) = self.asteroids[i]
-            if y < 700:
+            t = self.checkCollisionShip(app, c, y)
+            t2 = self.checkCollisionBullet(app, c, y)
+            if y < 700 and t == False and t2 == False:
                 res.append((c,y+10))
+            elif t == True:
+                app.lives -= 1
+            elif t2 == True:
+                app.score += 10
         self.asteroids = res
     
     def addAsteroid(self):
