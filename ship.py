@@ -6,9 +6,6 @@ class ship(object):
         self.bullets = [] # (col, height) tuples
     
     def drawShip(self, app, canvas):
-        x = (self.column)*100 + 50
-        canvas.create_image(x,600, image=ImageTk.PhotoImage(Image.open("images/ship.jpeg"))) # change later
-
         for bullet in self.bullets:
             (col, height) = bullet
             x = col*100 + 50
@@ -16,6 +13,9 @@ class ship(object):
             test = Image.open("images/bullet.png")
             resized = test.resize((30,30))
             canvas.create_image(x, y, image=ImageTk.PhotoImage(resized))
+
+        x = (self.column)*100 + 50
+        canvas.create_image(x,600, image=ImageTk.PhotoImage(Image.open("images/ship.jpeg"))) # change later
     
     def updateBullets(self): # called every timer tick
         res = []

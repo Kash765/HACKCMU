@@ -13,7 +13,7 @@ class asteroid(object):
             resized = asteroid.resize((50,50))
             canvas.create_image(x,y, image=ImageTk.PhotoImage(resized))
 
-    def updateAsteroid(self):
+    def updateAsteroid(self, app):
         res = []
         for i in range(len(self.asteroids)):
             (c, y) = self.asteroids[i]

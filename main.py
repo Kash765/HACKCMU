@@ -19,11 +19,18 @@ def appStarted(app):
 def redrawAll(app, canvas):
     app.ship.drawShip(app, canvas)
     app.asteroids.drawAsteroid(app, canvas)
+
+    # score things
+    txt = f"SCORE: {app.score}       LIVES: {app.lives}"
+    canvas.create_text(app.width // 2, 50,
+            text=txt, fill="red3",
+            font="Helvetica 30 bold")
+
     pass
 
 def keyPressed(app, event):
     if event.key == "Space":
-        app.ship.bullets.append((app.ship.column,600))
+        app.ship.bullets.append((app.ship.column,550))
         pass
     elif event.key == "Left":
         if app.ship.column > 0:
@@ -39,8 +46,8 @@ def keyPressed(app, event):
 def timerFired(app):
     app.time += 1
     app.ship.updateBullets()
-    app.asteroids.updateAsteroid()
-    if app.time % 50 == 0:
+    app.asteroids.updateAsteroid(app)
+    if app.time % 30 == 0:
         app.asteroids.addAsteroid()
     
 
