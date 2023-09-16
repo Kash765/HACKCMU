@@ -1,5 +1,7 @@
 from cmu_112_graphics import *
 from ship import *
+from asteroid import *
+import random
 
 def appStarted(app):
     # game stuff
@@ -11,10 +13,12 @@ def appStarted(app):
 
     # objects
     app.ship = ship(2)
+    app.asteroids = asteroid()
     pass
 
 def redrawAll(app, canvas):
     app.ship.drawShip(app, canvas)
+    app.asteroids.drawAsteroid(app, canvas)
     pass
 
 def keyPressed(app, event):
@@ -35,5 +39,9 @@ def keyPressed(app, event):
 def timerFired(app):
     app.time += 1
     app.ship.updateBullets()
+    app.asteroids.updateAsteroid()
+    if app.time % 50 == 0:
+        app.asteroids.addAsteroid()
+    
 
 runApp(width=500,height=700)
